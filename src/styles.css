@@ -1,0 +1,32 @@
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.user-card img {
+  border-radius: 50%;
+}
+
+.pagination {
+  margin: 20px 0;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.loading {
+  text-align: center;
+}

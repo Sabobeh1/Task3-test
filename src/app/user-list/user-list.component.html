@@ -1,0 +1,22 @@
+
+
+<div class="controls">
+    <label for="items-per-page">Items per page:</label>
+    <select id="items-per-page" [(ngModel)]="itemsPerPage" (change)="fetchUsers()">
+      <option *ngFor="let option of itemsPerPageOptions" [value]="option">{{ option }}</option>
+    </select>
+  </div>
+  
+  <div *ngIf="!isLoading">
+    <ul class="user-list">
+      <li *ngFor="let user of users" class="user-card">
+        <img [src]="user.avatar" alt="{{ user.first_name }}'s avatar" class="avatar" />
+        <div class="user-info">
+          <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+          <p>{{ user.email }}</p>
+        </div>
+        <button>View details</button>
+      </li>
+    </ul>
+  </div>
+  
