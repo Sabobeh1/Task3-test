@@ -3,11 +3,14 @@
     <p>Loading user details...</p>
   </div>
   
-  <!-- User Details -->
-  <div *ngIf="!isLoading && user">
-    <img [src]="user.avatar" alt="{{ user.first_name }}'s avatar" />
-    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-    <p>Email: {{ user.email }}</p>
+  <div class="user-details">
     <button (click)="goBack()">Back</button>
+  
+    <div *ngIf="user">
+      <img [src]="user.avatar" alt="User Avatar" />
+      <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+      <p>Email: {{ user.email }}</p>
+    </div>
   </div>
+  
   
