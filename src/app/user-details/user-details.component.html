@@ -1,9 +1,4 @@
-<!-- Loading Spinner -->
-<div *ngIf="isLoading" class="loading">
-    <p>Loading user details...</p>
-  </div>
-  
-  <div class="user-details">
+<div class="user-details">
     <button (click)="goBack()">Back</button>
   
     <div *ngIf="user">
@@ -12,5 +7,4 @@
       <p>Email: {{ user.email }}</p>
     </div>
   </div>
-  
   

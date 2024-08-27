@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';  // Import the Router for navigation
 import { UserService } from '../user.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Required for ngModel
@@ -19,7 +20,7 @@ export class UserListComponent implements OnInit {
   totalUsers: number = 0;
   itemsPerPageOptions: number[] = [5, 10, 15];  // Options for dropdown
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}  // Inject Router
 
   ngOnInit(): void {
     this.fetchUsers();  // Fetch users on component initialization
@@ -40,6 +41,11 @@ export class UserListComponent implements OnInit {
         this.isLoading = false;
       }
     );
+  }
+
+  // Navigate to the user details page
+  onUserClick(id: number): void {
+    this.router.navigate(['/user', id]);  // Navigate to the user details page by ID
   }
 
   // Method to filter users by ID
