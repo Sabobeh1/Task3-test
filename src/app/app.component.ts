@@ -9,7 +9,6 @@ import { HeaderComponent } from './header/header.component';
   imports: [UserListComponent, HeaderComponent]
 })
 export class AppComponent {
-  title = 'User Dashboard';
 
   // Get a reference to the UserListComponent
   @ViewChild(UserListComponent) userListComponent!: UserListComponent;
