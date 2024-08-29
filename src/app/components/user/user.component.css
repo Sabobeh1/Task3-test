@@ -1,0 +1,104 @@
+.user-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  background-color: white; /* Background color for the card */
+  height: 150px; /* Fixed height for each card */
+  width: 350px; /* Fixed width for each card */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  overflow: hidden; /* Ensure content does not overflow */
+}
+
+.user-card:hover {
+  background-color: #f9f9f9;
+}
+
+.user-avatar {
+  flex-shrink: 0;
+  margin-right: 15px;
+}
+
+.avatar {
+  width: 60px; /* Avatar size */
+  height: 60px;
+  border-radius: 50%;
+}
+
+.user-info {
+  flex-grow: 1;
+  overflow: hidden; /* Hide overflow content */
+}
+
+.user-info h3 {
+  margin: 0 0 5px 0; /* Smaller margin */
+  font-size: 18px;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
+
+.user-info p {
+  margin: 0 0 15px 0; /* More space between email and hr */
+  font-size: 14px;
+  color: #666;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
+
+.user-info hr {
+  margin: 0 0 10px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.button-container {
+  text-align: left; /* Align the button to the left */
+}
+
+.view-details-button {
+  padding: 7px 15px;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-details-button:hover {
+  background-color: #303f9f;
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .user-card {
+    flex-direction: row;
+    height: auto; /* Adjust height automatically on smaller screens */
+    width: 100%; /* Make the card width responsive */
+    max-width: 100%; /* Ensure full width on small screens */
+  }
+
+  .avatar {
+    margin-right: 10px;
+  }
+
+  .user-info h3, .user-info p {
+    white-space: normal; /* Allow text to wrap on smaller screens */
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .view-details-button {
+    align-self: flex-end;
+  }
+}

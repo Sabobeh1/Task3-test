@@ -1,0 +1,31 @@
+<div *ngIf="isLoading">
+  <p>Loading users...</p>
+</div>
+
+<div *ngIf="errorMessage" class="error">
+  <p>{{ errorMessage }}</p>
+</div>
+
+<div *ngIf="!isLoading && !errorMessage" class="container">
+
+  <div class="user-list-container">
+    <app-pagination 
+      [currentPage]="currentPage" 
+      [totalPages]="totalPages"
+      [itemsPerPage]="itemsPerPage"
+      [itemsPerPageOptions]="itemsPerPageOptions"
+      (pageChanged)="onPageChanged($event)"
+      (itemsPerPageChanged)="onItemsPerPageChanged($event)">
+    </app-pagination>
+
+    <ul class="user-list">
+      <app-user *ngFor="let user of filteredUsers" [user]="user" [onViewDetails]="selectUser.bind(this)"></app-user>
+    </ul>
+  </div>
+
+  <div class="user-details-container">
+    <app-user-details *ngIf="selectedUser" [user]="selectedUser"></app-user-details>
+  </div>
+</div>
+
+

@@ -1,37 +1,39 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Subscription, throwError } from 'rxjs';
 import { catchError, map, delay } from 'rxjs/operators';
+import { UserComponent } from '../user/user.component';
+import { UserDetailsComponent } from '../user-details/user-details.component';
+import { PaginationComponent } from '../pagination/pagination.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, UserComponent, UserDetailsComponent, PaginationComponent, FormsModule]
 })
 export class UserListComponent implements OnInit, OnDestroy {
   users: any[] = [];
   filteredUsers: any[] = [];
+  selectedUser: any = null;
   isLoading = true;
   errorMessage: string | null = null;
   itemsPerPage = 5;
   currentPage = 1;
   totalUsers = 0;
-  totalPages = 0; // Total pages based on users and itemsPerPage
+  totalPages = 0;
   itemsPerPageOptions = [5, 10, 15];
   private userSubscription!: Subscription;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.fetchUsers();
   }
 
-  // Fetch users and manage loading and errors
   fetchUsers(): void {
     this.isLoading = true;
     this.errorMessage = null;
@@ -53,7 +55,7 @@ export class UserListComponent implements OnInit, OnDestroy {
           this.users = response.data;
           this.filteredUsers = [...this.users];
           this.totalUsers = response.total;
-          this.totalPages = Math.ceil(this.totalUsers / this.itemsPerPage); // Calculate total pages
+          this.totalPages = Math.ceil(this.totalUsers / this.itemsPerPage);
           this.isLoading = false;
         },
         error: (error) => {
@@ -63,30 +65,31 @@ export class UserListComponent implements OnInit, OnDestroy {
       });
   }
 
-  // Method to filter users by ID
   handleSearch(id: number | null): void {
     if (id !== null) {
       this.filteredUsers = this.users.filter(user => user.id === id);
     } else {
-      this.filteredUsers = [...this.users]; // Reset to full list if no valid ID
+      this.filteredUsers = [...this.users];
     }
   }
 
-  // Navigate to the user details page
-  onUserClick(id: number): void {
-    this.router.navigate(['/user', id]);
+  selectUser(user: any): void {
+    this.selectedUser = user;
   }
 
-  // Handle pagination changes
-  changePage(page: number): void {
-    // Ensure page is within bounds
-    if (page >= 1 && page <= this.totalPages && page !== this.currentPage) {
+  onPageChanged(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
-      this.fetchUsers(); // Fetch users for the new page
+      this.fetchUsers();
     }
   }
 
-  // Unsubscribe to prevent memory leaks
+  onItemsPerPageChanged(itemsPerPage: number): void {
+    this.itemsPerPage = itemsPerPage;
+    this.currentPage = 1;  // Reset to the first page whenever items per page is changed
+    this.fetchUsers();
+  }
+
   ngOnDestroy(): void {
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();

@@ -1,0 +1,14 @@
+<li class="user-card">
+    <div class="user-avatar">
+      <img [src]="user.avatar" alt="{{ user.first_name }}'s avatar" class="avatar" />
+    </div>
+    <div class="user-info">
+      <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+      <p>{{ user.email }}</p>
+      <hr>
+      <div class="button-container">
+        <button class="view-details-button" (click)="viewDetails()">View details</button>
+      </div>
+    </div>
+  </li>
+  
