@@ -2,10 +2,11 @@
   <p>Loading users...</p>
 </div>
 
-<div *ngIf="errorMessage" class="error">
-  <p>{{ errorMessage }}</p>
-</div>
-
+<app-error 
+  *ngIf="errorMessage" 
+  [errorMessage]="errorMessage" 
+  [errorDetails]="'There was an issue when contacting the server, please check your internet connection'">
+</app-error>
 <div *ngIf="!isLoading && !errorMessage" class="container">
 
   <div class="user-list-container">

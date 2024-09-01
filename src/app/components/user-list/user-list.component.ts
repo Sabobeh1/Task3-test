@@ -7,13 +7,14 @@ import { UserComponent } from '../user/user.component';
 import { UserDetailsComponent } from '../user-details/user-details.component';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
+import { ErrorComponent } from "../error/error.component";
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
-  imports: [CommonModule, UserComponent, UserDetailsComponent, PaginationComponent, FormsModule]
+  imports: [CommonModule, UserComponent, UserDetailsComponent, PaginationComponent, FormsModule, ErrorComponent]
 })
 export class UserListComponent implements OnInit, OnDestroy {
   users: any[] = [];
@@ -37,7 +38,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   fetchUsers(): void {
     this.isLoading = true;
     this.errorMessage = null;
-
+  
     this.userSubscription = this.userService
       .getUsers(this.currentPage, this.itemsPerPage)
       .pipe(
@@ -59,11 +60,12 @@ export class UserListComponent implements OnInit, OnDestroy {
           this.isLoading = false;
         },
         error: (error) => {
-          this.errorMessage = error.message;
+          this.errorMessage = 'Failed to fetch users. Please try again later.';
           this.isLoading = false;
         }
       });
   }
+  
 
   handleSearch(id: number | null): void {
     if (id !== null) {
