@@ -81,14 +81,10 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   handleSearch(id: number | null): void {
     if (id !== null) {
-      this.filteredUsers = this.users.filter(user => user.id === id);
+      this.filteredUsers = this.users.filter((user) => user.id === id);
     } else {
       this.filteredUsers = [...this.users];
     }
-  }
-
-  selectUser(user: any): void {
-    this.selectedUser = user;
   }
 
   onPageChanged(page: number): void {
@@ -100,7 +96,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   onItemsPerPageChanged(itemsPerPage: number): void {
     this.itemsPerPage = itemsPerPage;
-    this.currentPage = 1;  // Reset to the first page whenever items per page is changed
+    this.currentPage = 1; // Reset to the first page whenever items per page is changed
     this.fetchUsers();
   }
 

@@ -8,14 +8,13 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [UserListComponent, HeaderComponent, RouterOutlet]  // Add RouterOutlet
+  imports: [UserListComponent, HeaderComponent, RouterOutlet]
 })
 export class AppComponent {
-
   @ViewChild(UserListComponent) userListComponent!: UserListComponent;
 
   handleSearch(id: number | null): void {
-    if (this.userListComponent && this.userListComponent.handleSearch) {
+    if (this.userListComponent) {
       this.userListComponent.handleSearch(id);
     }
   }
