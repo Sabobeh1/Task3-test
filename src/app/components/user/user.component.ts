@@ -11,9 +11,10 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class UserComponent {
   @Input() user: any;
+
   constructor(private router: Router) {}
 
   viewDetails() {
-    this.router.navigate(['/users', this.user.id]); // Correct the navigation path
+    this.router.navigate(['/users', this.user.id]);  // Correct the navigation path
   }
 }

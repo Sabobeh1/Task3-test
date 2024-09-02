@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 
@@ -17,7 +17,8 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router  // Inject Router for navigation
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +36,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   goBack(): void {
-    this.user = null; // Clear user data to hide the details
+    this.router.navigate(['/']);  // Navigate back to the user list
   }
 }
