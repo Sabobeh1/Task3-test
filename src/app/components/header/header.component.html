@@ -1,13 +1,8 @@
 <header>
   <span><h1>User Dashboard</h1></span>
+  @if(showSearch){
   <span>
-    <input
-      type="text"
-      id="search-bar"
-      name="userId"
-      placeholder="Search by user id ..."
-      [(ngModel)]="searchValue"
-      (input)="onSearchChange()"
-    />
+    <app-search (searchId)="onSearchChange($event)"></app-search>
   </span>
+}
 </header>

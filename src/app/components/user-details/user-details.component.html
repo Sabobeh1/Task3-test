@@ -1,5 +1,8 @@
+<app-header [showSearch]="false"></app-header> 
+
+<button (click)="goBack()" class="backButton">Back</button>
+
 <div *ngIf="user" class="user-details-card">
-  <button (click)="goBack()">Back</button> <!-- Back button -->
   <div class="user-header">
     <img [src]="user.avatar" alt="User Avatar" class="avatar" />
     <div class="user-header-info">

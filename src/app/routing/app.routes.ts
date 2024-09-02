@@ -3,8 +3,6 @@ import { UserListComponent } from '../components/user-list/user-list.component';
 import { UserDetailsComponent } from '../components/user-details/user-details.component';
 
 export const routes: Routes = [
-  { path: '', component: UserListComponent },  // Default path to show the user list
-  { path: 'users/:id', component: UserDetailsComponent },  // User details page
-  { path: '**', redirectTo: '', pathMatch: 'full' }  // Fallback route
+  { path: '', component: UserListComponent },
+  { path: 'users/:id', component: UserDetailsComponent },
 ];
-

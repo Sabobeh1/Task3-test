@@ -65,3 +65,18 @@
   font-style: italic;
   text-align: center;
 }
+
+.backButton {
+  align-self: flex-start;
+  padding: 7px 15px;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.backButton:hover {
+  background-color: #303f9f;
+}

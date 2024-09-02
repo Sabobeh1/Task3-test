@@ -15,6 +15,6 @@ export class UserComponent {
   constructor(private router: Router) {}
 
   viewDetails() {
-    this.router.navigate(['/users', this.user.id]);  // Correct the navigation path
+    this.router.navigate(['/users', this.user.id]); // Correct the navigation path
   }
 }

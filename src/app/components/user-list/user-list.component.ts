@@ -9,6 +9,7 @@ import { PaginationComponent } from '../pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from "../error/error.component";
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from "../header/header.component";
 
 
 @Component({
@@ -24,7 +25,8 @@ import { RouterOutlet } from '@angular/router';
     FormsModule,
     RouterOutlet,
     ErrorComponent,
-  ],
+    HeaderComponent
+],
 })
 export class UserListComponent implements OnInit, OnDestroy {
   users: any[] = [];

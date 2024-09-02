@@ -1,25 +1,22 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Required for ngModel binding
+import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+import { SearchComponent } from '../search input/search.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  imports: [FormsModule] // Import FormsModule for ngModel
+  imports: [SearchComponent, FormsModule]
 })
 export class HeaderComponent {
-  searchValue: string = '';
-
-  @Output() searchId = new EventEmitter<number | null>(); // Emit number or null
+  @Input() showSearch: boolean = true; // Control the visibility of the search input
+  @Output() searchId = new EventEmitter<number | null>();
 
   // Triggered when the search bar input changes
-  onSearchChange() {
-    const id = parseInt(this.searchValue, 10);
-    if (!isNaN(id)) {
-      this.searchId.emit(id); // Emit the user ID if it's a valid number
-    } else {
-      this.searchId.emit(null); // Emit null if the input is invalid
-    }
+  onSearchChange(id: number | null): void {
+    this.searchId.emit(id);
   }
 }
