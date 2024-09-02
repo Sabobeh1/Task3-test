@@ -1,14 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { HeaderComponent } from './components/header/header.component';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: `./app.component.css`,
-  imports: [UserListComponent, HeaderComponent , RouterOutlet]
+  imports: [UserListComponent, HeaderComponent]
 })
 export class AppComponent {
 

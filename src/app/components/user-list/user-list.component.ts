@@ -8,13 +8,23 @@ import { UserDetailsComponent } from '../user-details/user-details.component';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from "../error/error.component";
+import { RouterOutlet } from '@angular/router';
+
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
-  imports: [CommonModule, UserComponent, UserDetailsComponent, PaginationComponent, FormsModule, ErrorComponent]
+  imports: [
+    CommonModule,
+    UserComponent,
+    UserDetailsComponent,
+    PaginationComponent,
+    FormsModule,
+    RouterOutlet,
+    ErrorComponent,
+  ],
 })
 export class UserListComponent implements OnInit, OnDestroy {
   users: any[] = [];

@@ -1,4 +1,5 @@
 <div *ngIf="user" class="user-details-card">
+  <button (click)="goBack()">Back </button>
   <div class="user-header">
     <img [src]="user.avatar" alt="User Avatar" class="avatar" />
     <div class="user-header-info">

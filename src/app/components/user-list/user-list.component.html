@@ -7,8 +7,8 @@
   [errorMessage]="errorMessage" 
   [errorDetails]="'There was an issue when contacting the server, please check your internet connection'">
 </app-error>
-<div *ngIf="!isLoading && !errorMessage" class="container">
 
+<div *ngIf="!isLoading && !errorMessage" class="container">
   <div class="user-list-container">
     <app-pagination 
       [currentPage]="currentPage" 
@@ -20,13 +20,17 @@
     </app-pagination>
 
     <ul class="user-list">
-      <app-user *ngFor="let user of filteredUsers" [user]="user" [onViewDetails]="selectUser.bind(this)"></app-user>
+      <app-user *ngFor="let user of filteredUsers" [user]="user"></app-user>
     </ul>
   </div>
 
-  <div class="user-details-container">
-    <app-user-details *ngIf="selectedUser" [user]="selectedUser"></app-user-details>
+  <div>
+    <router-outlet />
   </div>
+  <!-- <div class="user-details-container">
+    <app-user-details *ngIf="selectedUser" [user]="selectedUser" [id]="selectedUser.d"></app-user-details>
+  </div> -->
 </div>
+
 
 

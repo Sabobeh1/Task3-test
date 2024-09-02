@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -6,16 +8,33 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.css'],
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
-export class UserDetailsComponent {
-  @Input() user: any = null;  // Input property to accept user data
-
-  isLoading = false;
+export class UserDetailsComponent implements OnInit {
+  user: any = null;
+  isLoading = true;
   errorMessage: string | null = null;
 
-  // Example for how you might handle a back action if needed
+  constructor(
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) {}
+
+  ngOnInit(): void {
+    const userId = +this.route.snapshot.paramMap.get('id')!; // Get user ID from route
+    this.userService.getUserById(userId).subscribe({
+      next: (response) => {
+        this.user = response.data;
+        this.isLoading = false;
+      },
+      error: (error) => {
+        this.errorMessage = 'Failed to fetch user details. Please try again later.';
+        this.isLoading = false;
+      }
+    });
+  }
+
   goBack(): void {
-    this.user = null;  // Clear user data to hide the details
+    this.user = null; // Clear user data to hide the details
   }
 }

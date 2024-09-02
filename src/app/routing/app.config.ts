@@ -1,13 +1,11 @@
-import { provideRouter } from '@angular/router';
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-    providers : [
-        provideRouter(routes),  // Provide the routes defined in app.routes.ts
-        provideHttpClient(),  // Provide the HttpClient service
-    ],
-}
-
-
+  providers: [
+    provideHttpClient(),
+    provideRouter(routes, withComponentInputBinding()),
+  ],
+};
