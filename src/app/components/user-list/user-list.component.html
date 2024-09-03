@@ -1,29 +1,35 @@
-<app-header [showSearch]="true" (searchId)="handleSearch($event)"></app-header> 
+<app-header [showSearch]="true" (searchId)="handleSearch($event)"></app-header>
 
-<div *ngIf="isLoading">
-  <p>Loading users...</p>
-</div>
-
-<app-error 
-  *ngIf="errorMessage" 
-  [errorMessage]="errorMessage" 
-  [errorDetails]="'There was an issue when contacting the server, please check your internet connection'">
-</app-error>
-
-<div *ngIf="!isLoading && !errorMessage" class="container">
-  <div class="user-list-container">
-    <app-pagination 
-      [currentPage]="currentPage" 
-      [totalPages]="totalPages"
-      [itemsPerPage]="itemsPerPage"
-      [itemsPerPageOptions]="itemsPerPageOptions"
-      (pageChanged)="onPageChanged($event)"
-      (itemsPerPageChanged)="onItemsPerPageChanged($event)">
-    </app-pagination>
-
-    <ul class="user-list">
-      <app-user *ngFor="let user of filteredUsers" [user]="user"></app-user>
-    </ul>
+@if (isLoading) {
+  <div>
+    <p>Loading users...</p>
   </div>
+}
 
-</div>
+@if (errorMessage) {
+  <app-error 
+    [errorMessage]="errorMessage" 
+    [errorDetails]="'There was an issue when contacting the server, please check your internet connection'">
+  </app-error>
+}
+
+@if (!isLoading && !errorMessage) {
+  <div class="container">
+    <div class="user-list-container">
+      <app-pagination 
+        [currentPage]="currentPage" 
+        [totalPages]="totalPages"
+        [itemsPerPage]="itemsPerPage"
+        [itemsPerPageOptions]="itemsPerPageOptions"
+        (pageChanged)="onPageChanged($event)"
+        (itemsPerPageChanged)="onItemsPerPageChanged($event)">
+      </app-pagination>
+
+      <ul class="user-list">
+        @for (user of filteredUsers; track $index) {
+          <app-user [user]="user"></app-user>
+        }
+      </ul>
+    </div>
+  </div>
+}

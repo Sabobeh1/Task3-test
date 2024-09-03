@@ -96,7 +96,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   onItemsPerPageChanged(itemsPerPage: number): void {
     this.itemsPerPage = itemsPerPage;
-    this.currentPage = 1; // Reset to the first page whenever items per page is changed
+    this.currentPage = 1; 
     this.fetchUsers();
   }
 

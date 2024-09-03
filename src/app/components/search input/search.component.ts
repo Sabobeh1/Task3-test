@@ -11,15 +11,14 @@ import { FormsModule } from '@angular/forms';
 export class SearchComponent {
   searchValue: string = '';
 
-  @Output() searchId = new EventEmitter<number | null>(); // Emit number or null
+  @Output() searchId = new EventEmitter<number | null>();
 
-  // Triggered when the search bar input changes
   onSearchChange() {
     const id = parseInt(this.searchValue, 10);
     if (!isNaN(id)) {
-      this.searchId.emit(id); // Emit the user ID if it's a valid number
+      this.searchId.emit(id); 
     } else {
-      this.searchId.emit(null); // Emit null if the input is invalid
+      this.searchId.emit(null); 
     }
   }
 }

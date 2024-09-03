@@ -23,3 +23,38 @@ input {
   background-color: white;
   color: black;
 }
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-bar {
+  padding: 8px;
+  width: 250px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: black;
+}
+
+@media (max-width: 505px) {
+  header {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  .search-container, #search-bar {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #search-bar {
+    width: calc(100% - 16px); 
+  }
+}

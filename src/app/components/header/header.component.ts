@@ -1,6 +1,5 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 import { SearchComponent } from '../search input/search.component';
 
@@ -12,10 +11,11 @@ import { SearchComponent } from '../search input/search.component';
   imports: [SearchComponent, FormsModule]
 })
 export class HeaderComponent {
-  @Input() showSearch: boolean = true; // Control the visibility of the search input
+  @Input() showSearch: boolean = true; 
   @Output() searchId = new EventEmitter<number | null>();
+  
 
-  // Triggered when the search bar input changes
+  //when the search bar input changes
   onSearchChange(id: number | null): void {
     this.searchId.emit(id);
   }
