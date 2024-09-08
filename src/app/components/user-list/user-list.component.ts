@@ -1,32 +1,30 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../user.service';
 import { CommonModule } from '@angular/common';
 import { Subscription, throwError } from 'rxjs';
 import { catchError, map, delay } from 'rxjs/operators';
-import { UserComponent } from '../user/user.component';
+import { UserComponent } from '../user/user.component';  // Already standalone
 import { UserDetailsComponent } from '../user-details/user-details.component';
-import { PaginationComponent } from '../pagination/pagination.component';
+import { PaginationComponent } from '../pagination/pagination.component';  // Standalone
 import { FormsModule } from '@angular/forms';
-import { ErrorComponent } from "../error/error.component";
+import { ErrorComponent } from '../error/error.component';  // Standalone
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "../header/header.component";
-
+import { HeaderComponent } from '../header/header.component';  // Standalone
 
 @Component({
   selector: 'app-user-list',
-  standalone: true,
+  standalone: true,  // Mark as standalone
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
   imports: [
     CommonModule,
-    UserComponent,
-    UserDetailsComponent,
-    PaginationComponent,
     FormsModule,
     RouterOutlet,
-    ErrorComponent,
-    HeaderComponent
-],
+    HeaderComponent,  // Import standalone component
+    PaginationComponent,  // Import standalone component
+    ErrorComponent,  // Import standalone component
+    UserComponent  // Import standalone component
+  ]
 })
 export class UserListComponent implements OnInit, OnDestroy {
   users: any[] = [];
@@ -50,7 +48,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   fetchUsers(): void {
     this.isLoading = true;
     this.errorMessage = null;
-  
+
     this.userSubscription = this.userService
       .getUsers(this.currentPage, this.itemsPerPage)
       .pipe(
@@ -77,7 +75,6 @@ export class UserListComponent implements OnInit, OnDestroy {
         }
       });
   }
-  
 
   handleSearch(id: number | null): void {
     if (id !== null) {
@@ -96,7 +93,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   onItemsPerPageChanged(itemsPerPage: number): void {
     this.itemsPerPage = itemsPerPage;
-    this.currentPage = 1; 
+    this.currentPage = 1;
     this.fetchUsers();
   }
 

@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pagination',
-  standalone: true,
+  standalone: true,  // Mark as standalone
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.css'],
-  imports: [CommonModule, FormsModule] 
+  imports: [CommonModule, FormsModule]
 })
 export class PaginationComponent {
   @Input() currentPage: number = 1;

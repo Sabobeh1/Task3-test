@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-error',
-  standalone: true,
+  standalone: true,  // Mark as standalone
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.css'],
   imports: [CommonModule]

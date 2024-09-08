@@ -26,8 +26,8 @@
       </app-pagination>
 
       <ul class="user-list">
-        @for (user of filteredUsers; track $index) {
-          <app-user [user]="user"></app-user>
+        @for (let user of filteredUsers; track $index) {
+          <app-user [user]="user"></app-user> <!-- Ensure app-user binding -->
         }
       </ul>
     </div>
