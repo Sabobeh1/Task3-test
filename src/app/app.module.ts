@@ -16,7 +16,7 @@ import { routes } from './app.routes';  // Import routes
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    UserModule  // Import UserModule
+    UserModule  
   ],
   bootstrap: [AppComponent]
 })
