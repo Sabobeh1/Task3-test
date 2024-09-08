@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { UserListComponent } from './components/user-list/user-list.component';
-import { HeaderComponent } from './components/header/header.component';
+import { UserListComponent } from './user/components/user-list/user-list.component';
+import { HeaderComponent } from './user/components/header/header.component';
 import { RouterOutlet } from '@angular/router';
 
 @Component({

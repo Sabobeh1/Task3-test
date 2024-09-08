@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../user.service';
 import { CommonModule } from '@angular/common';
 import { Subscription, throwError } from 'rxjs';
 import { catchError, map, delay } from 'rxjs/operators';
