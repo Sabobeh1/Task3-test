@@ -1,15 +1,16 @@
+// src/app/components/user-details/user-details.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from "../header/header.component";
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-user-details',
   standalone: true,
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.css'],
-  imports: [CommonModule, HeaderComponent],
+  imports: [CommonModule, HeaderComponent],  // Import HeaderComponent as standalone
 })
 export class UserDetailsComponent implements OnInit {
   user: any = null;
@@ -23,7 +24,7 @@ export class UserDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const userId = +this.route.snapshot.paramMap.get('id')!; // Get user ID from route
+    const userId = +this.route.snapshot.paramMap.get('id')!;
     this.userService.getUserById(userId).subscribe({
       next: (response) => {
         this.user = response.data;
@@ -37,6 +38,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/']);  //  back to the user list
+    this.router.navigate(['/']);
   }
 }
