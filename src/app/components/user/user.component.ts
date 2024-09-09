@@ -1,12 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user',
-  standalone: true,
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
-  imports: [RouterModule],
 })
 export class UserComponent {
   @Input() user: any;
@@ -15,5 +14,6 @@ export class UserComponent {
 
   viewDetails() {
     this.router.navigate(['/users', this.user.id]); 
+
   }
 }

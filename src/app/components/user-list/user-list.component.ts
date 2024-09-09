@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../user.service';
 import { CommonModule } from '@angular/common';
 import { Subscription, throwError } from 'rxjs';
 import { catchError, map, delay } from 'rxjs/operators';
@@ -10,24 +10,13 @@ import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from "../error/error.component";
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "../header/header.component";
-import { User } from '../../models/user.interface';  // Import User interface
+import { User } from '../user.interface';  // Import User interface
 
 
 @Component({
   selector: 'app-user-list',
-  standalone: true,
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
-  imports: [
-    CommonModule,
-    UserComponent,
-    UserDetailsComponent,
-    PaginationComponent,
-    FormsModule,
-    RouterOutlet,
-    ErrorComponent,
-    HeaderComponent
-],
 })
 export class UserListComponent implements OnInit, OnDestroy {
   users: User[] = [];               // Use User type
@@ -41,6 +30,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   totalPages = 0;
   itemsPerPageOptions = [5, 10, 15];
   private userSubscription!: Subscription;
+
 
   constructor(private userService: UserService) {}
 

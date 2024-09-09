@@ -3,10 +3,8 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
-  standalone: true,
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  imports: [FormsModule]
 })
 export class SearchComponent {
   searchValue: string = '';

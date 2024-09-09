@@ -5,10 +5,8 @@ import { SearchComponent } from '../search input/search.component';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  imports: [SearchComponent, FormsModule]
 })
 export class HeaderComponent {
   @Input() showSearch: boolean = true; 
