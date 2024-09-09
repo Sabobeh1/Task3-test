@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from "../header/header.component";
+import { User } from '../../models/user.interface';  // Import User interface
 
 @Component({
   selector: 'app-user-details',
@@ -12,7 +13,7 @@ import { HeaderComponent } from "../header/header.component";
   imports: [CommonModule, HeaderComponent],
 })
 export class UserDetailsComponent implements OnInit {
-  user: any = null;
+  user: User | null = null;  // Use User type
   isLoading = true;
   errorMessage: string | null = null;
 

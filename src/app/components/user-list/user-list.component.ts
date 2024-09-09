@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from "../error/error.component";
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "../header/header.component";
+import { User } from '../../models/user.interface';  // Import User interface
 
 
 @Component({
@@ -29,9 +30,9 @@ import { HeaderComponent } from "../header/header.component";
 ],
 })
 export class UserListComponent implements OnInit, OnDestroy {
-  users: any[] = [];
-  filteredUsers: any[] = [];
-  selectedUser: any = null;
+  users: User[] = [];               // Use User type
+  filteredUsers: User[] = [];        // Use User type
+  selectedUser: User | null = null;  // Use User type
   isLoading = true;
   errorMessage: string | null = null;
   itemsPerPage = 5;
