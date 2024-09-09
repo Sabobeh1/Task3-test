@@ -11,6 +11,7 @@ import { ErrorComponent } from "../error/error.component";
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "../header/header.component";
 import { User } from '../user.interface';  // Import User interface
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -31,8 +32,9 @@ export class UserListComponent implements OnInit, OnDestroy {
   itemsPerPageOptions = [5, 10, 15];
   private userSubscription!: Subscription;
 
+  isClicked = false;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchUsers();
@@ -89,6 +91,10 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.itemsPerPage = itemsPerPage;
     this.currentPage = 1; 
     this.fetchUsers();
+  }
+  // Method to set the isClicked flag
+  setViewDetailsClicked(clicked: boolean): void {
+    this.isClicked = clicked;
   }
 
   ngOnDestroy(): void {

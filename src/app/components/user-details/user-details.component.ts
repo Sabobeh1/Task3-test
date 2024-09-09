@@ -4,6 +4,8 @@ import { UserService } from '../user.service';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from "../header/header.component";
 import { User } from '../user.interface';  // Import User interface
+import { UserListComponent } from '../user-list/user-list.component';
+
 
 @Component({
   selector: 'app-user-details',
@@ -18,7 +20,8 @@ export class UserDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    private router: Router  
+    private router: Router,
+    private userListComponent: UserListComponent
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +39,8 @@ export class UserDetailsComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/']);  //  back to the user list
+    this.userListComponent.setViewDetailsClicked(false);
+    this.router.navigate(['/']);  
+
   }
 }

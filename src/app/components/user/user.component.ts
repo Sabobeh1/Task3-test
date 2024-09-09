@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { UserService } from '../user.service';
+import { Router } from '@angular/router';
+import { UserListComponent } from '../user-list/user-list.component';
 
 @Component({
   selector: 'app-user',
@@ -10,10 +10,10 @@ import { UserService } from '../user.service';
 export class UserComponent {
   @Input() user: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userListComponent: UserListComponent) {}
 
   viewDetails() {
+    this.userListComponent.setViewDetailsClicked(true);
     this.router.navigate(['/users', this.user.id]); 
-
   }
 }
