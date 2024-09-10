@@ -1,0 +1,17 @@
+<h2>Update User</h2>
+<form #updateUserForm="ngForm" (ngSubmit)="updateUser(updateUserForm)">
+  <label for="first_name">First Name:</label>
+  <input type="text" id="first_name" [(ngModel)]="user.first_name" name="first_name" required>
+
+  <label for="last_name">Last Name:</label>
+  <input type="text" id="last_name" [(ngModel)]="user.last_name" name="last_name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" [(ngModel)]="user.email" name="email" required>
+
+  <label for="avatar">Avatar URL:</label>
+  <input type="text" id="avatar" [(ngModel)]="user.avatar" name="avatar">
+
+  <button type="submit" [disabled]="!updateUserForm.form.valid">Update User</button>
+</form>
+<button (click)="router.navigate(['/users'])">Cancel</button>

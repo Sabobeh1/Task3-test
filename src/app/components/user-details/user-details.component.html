@@ -1,6 +1,8 @@
 <app-header [showSearch]="false"></app-header> 
 
-<button (click)="goBack()" class="backButton">Back</button>
+<button (click)="goBack()">Back</button>
+<button (click)="updateUser()">Update</button>
+<button (click)="deleteUser()">Delete</button>
 
 <div *ngIf="user" class="user-details-card">
   <div class="user-header">

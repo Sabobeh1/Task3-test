@@ -13,7 +13,6 @@ export class UserComponent {
   constructor(private router: Router, private userListComponent: UserListComponent) {}
 
   viewDetails() {
-    this.userListComponent.setViewDetailsClicked(true);
     this.router.navigate(['/users', this.user.id]); 
   }
 }

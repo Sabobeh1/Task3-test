@@ -12,6 +12,8 @@ import { provideRouter, RouterModule, RouterOutlet } from '@angular/router';
 import { routes } from '../app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
+import { AddUserComponent } from './add-user/add-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { UserService } from './user.service';
     HeaderComponent,
     ErrorComponent,
     SearchComponent,
+    AddUserComponent,
+    UpdateUserComponent
   ],
   imports: [CommonModule, FormsModule,
     RouterModule.forRoot(routes),

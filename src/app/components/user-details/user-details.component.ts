@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
-import { CommonModule } from '@angular/common';
-import { HeaderComponent } from "../header/header.component";
-import { User } from '../user.interface';  // Import User interface
-import { UserListComponent } from '../user-list/user-list.component';
-
+import { User } from '../user.interface';
 
 @Component({
   selector: 'app-user-details',
@@ -13,34 +9,44 @@ import { UserListComponent } from '../user-list/user-list.component';
   styleUrls: ['./user-details.component.css'],
 })
 export class UserDetailsComponent implements OnInit {
-  user: User | null = null;  // Use User type
+  user: User | null = null;
   isLoading = true;
   errorMessage: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    private router: Router,
-    private userListComponent: UserListComponent
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    const userId = +this.route.snapshot.paramMap.get('id')!; // Get user ID from route
-    this.userService.getUserById(userId).subscribe({
-      next: (response) => {
-        this.user = response.data;
-        this.isLoading = false;
-      },
-      error: (error) => {
-        this.errorMessage = 'Failed to fetch user details. Please try again later.';
-        this.isLoading = false;
-      }
-    });
+    const userId = +this.route.snapshot.paramMap.get('id')!;
+    if (userId) {
+      this.userService.getUserById(userId).subscribe({
+        next: (response: { data: User }) => {  // Explicitly define the response type
+          this.user = response.data;  // Access the `data` property properly
+          this.isLoading = false;
+        },
+        error: () => {
+          this.errorMessage = 'Failed to load user details.';
+          this.isLoading = false;
+        }
+      });
+    }
   }
 
   goBack(): void {
-    this.userListComponent.setViewDetailsClicked(false);
-    this.router.navigate(['/']);  
+    this.router.navigate(['/users']);
+  }
 
+  deleteUser(): void {
+    if (this.user) {
+      this.userService.deleteUser(this.user.id);
+      this.goBack();
+    }
+  }
+
+  updateUser(): void {
+    this.router.navigate(['/users/edit', this.user?.id]);
   }
 }

@@ -1,18 +1,10 @@
+// src/app/components/user-list/user-list.component.ts
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from '../user.service';
-import { CommonModule } from '@angular/common';
-import { Subscription, throwError } from 'rxjs';
-import { catchError, map, delay } from 'rxjs/operators';
-import { UserComponent } from '../user/user.component';
-import { UserDetailsComponent } from '../user-details/user-details.component';
-import { PaginationComponent } from '../pagination/pagination.component';
-import { FormsModule } from '@angular/forms';
-import { ErrorComponent } from "../error/error.component";
-import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "../header/header.component";
-import { User } from '../user.interface';  // Import User interface
+import { Subscription } from 'rxjs';
+import { User } from '../user.interface';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-user-list',
@@ -20,9 +12,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit, OnDestroy {
-  users: User[] = [];               // Use User type
-  filteredUsers: User[] = [];        // Use User type
-  selectedUser: User | null = null;  // Use User type
+  users: User[] = [];
+  filteredUsers: User[] = [];
+  selectedUser: User | null = null;
   isLoading = true;
   errorMessage: string | null = null;
   itemsPerPage = 5;
@@ -34,28 +26,18 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   isClicked = false;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, public router: Router) {}
 
   ngOnInit(): void {
-    this.fetchUsers();
+    this.loadUsers();
   }
 
-  fetchUsers(): void {
+  loadUsers(): void {
     this.isLoading = true;
     this.errorMessage = null;
-  
+
     this.userSubscription = this.userService
       .getUsers(this.currentPage, this.itemsPerPage)
-      .pipe(
-        delay(1000),
-        map((response) => response),
-        catchError((error) => {
-          console.error('Error fetching users:', error);
-          this.errorMessage = 'Failed to fetch users. Please try again later.';
-          this.isLoading = false;
-          return throwError(() => new Error('Failed to fetch users'));
-        })
-      )
       .subscribe({
         next: (response) => {
           this.users = response.data;
@@ -65,12 +47,11 @@ export class UserListComponent implements OnInit, OnDestroy {
           this.isLoading = false;
         },
         error: (error) => {
-          this.errorMessage = 'Failed to fetch users. Please try again later.';
+          this.errorMessage = 'Failed to load users';
           this.isLoading = false;
         }
       });
   }
-  
 
   handleSearch(id: number | null): void {
     if (id !== null) {
@@ -80,21 +61,29 @@ export class UserListComponent implements OnInit, OnDestroy {
     }
   }
 
+ // src/app/components/user-list/user-list.component.ts
+
+  addUser(): void {
+    this.router.navigate(['/users/add']);  // Navigate to the Add User form
+  }
+
+
+  deleteUser(id: number): void {
+    this.userService.deleteUser(id);
+    this.loadUsers(); // Reload users from local storage
+  }
+
   onPageChanged(page: number): void {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
-      this.fetchUsers();
+      this.loadUsers();
     }
   }
 
   onItemsPerPageChanged(itemsPerPage: number): void {
     this.itemsPerPage = itemsPerPage;
-    this.currentPage = 1; 
-    this.fetchUsers();
-  }
-  // Method to set the isClicked flag
-  setViewDetailsClicked(clicked: boolean): void {
-    this.isClicked = clicked;
+    this.currentPage = 1;
+    this.loadUsers();
   }
 
   ngOnDestroy(): void {
