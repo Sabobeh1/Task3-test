@@ -1,50 +1,26 @@
-  <app-header [showSearch]="true" (searchId)="handleSearch($event)"></app-header>
+<app-header [showSearch]="true" (searchId)="handleSearch($event)"></app-header>
 
-    <!-- <div>
-      <p>Loading users...</p>
-    </div>
-   -->
   
   
-    <!-- <app-error 
-      [errorMessage]="errorMessage" 
-      [errorDetails]="'There was an issue when contacting the server, please check your internet connection'">
-    </app-error> -->
-  
-  
-  
-    <div class="container">
-      <div class="user-list-container">
-        <app-pagination 
-          [currentPage]="currentPage" 
-          [totalPages]="totalPages"
-          [itemsPerPage]="itemsPerPage"
-          [itemsPerPageOptions]="itemsPerPageOptions"
-          (pageChanged)="onPageChanged($event)"
-          (itemsPerPageChanged)="onItemsPerPageChanged($event)">
-        </app-pagination>
-  
-        <!-- <ul class="user-list">
-          @for (user of filteredUsers; track $index) {
-            <app-user [user]="user"></app-user>
-          }
-        </ul> -->
-        <button (click)="addUser()">Add User</button>
-        <ul>
-          <li *ngFor="let user of filteredUsers">
-            {{ user.first_name }} {{ user.last_name }}
-            <button (click)="deleteUser(user.id)">Delete</button>
-            <button (click)="router.navigate(['/users', user.id])">Details</button>
-          </li>
-        </ul>
+<div class="container">
+  <button (click)="addUser()" class="add-user-btn">Add User</button>
 
-      </div>
-    </div>
-  
-  
-  <!-- if i want to make it using nested routes but it must be displayed under the list of users which is something that we don`t want it as this moment -->
-<router-outlet></router-outlet>
+  <div class="user-list-container">
+    <app-pagination 
+      [currentPage]="currentPage" 
+      [totalPages]="totalPages"
+      [itemsPerPage]="itemsPerPage"
+      [itemsPerPageOptions]="itemsPerPageOptions"
+      (pageChanged)="onPageChanged($event)"
+      (itemsPerPageChanged)="onItemsPerPageChanged($event)">
+    </app-pagination>
 
-
+    <ul class="user-list">
+      @for (user of filteredUsers; track $index) {
+        <app-user [user]="user"></app-user>
+      }
+    </ul>
+  </div>
+</div>
 
 

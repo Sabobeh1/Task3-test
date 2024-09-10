@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   isClicked = false;
 
-  constructor(private userService: UserService, public router: Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadUsers();
@@ -61,12 +61,9 @@ export class UserListComponent implements OnInit, OnDestroy {
     }
   }
 
- // src/app/components/user-list/user-list.component.ts
-
   addUser(): void {
-    this.router.navigate(['/users/add']);  // Navigate to the Add User form
+    this.router.navigate(['/users/add']);
   }
-
 
   deleteUser(id: number): void {
     this.userService.deleteUser(id);

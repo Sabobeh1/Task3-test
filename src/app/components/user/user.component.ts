@@ -10,7 +10,7 @@ import { UserListComponent } from '../user-list/user-list.component';
 export class UserComponent {
   @Input() user: any;
 
-  constructor(private router: Router, private userListComponent: UserListComponent) {}
+  constructor(private router: Router, private userListComponent: UserListComponent ) {}
 
   viewDetails() {
     this.router.navigate(['/users', this.user.id]); 

@@ -1,12 +1,14 @@
 <app-header [showSearch]="false"></app-header> 
 
-<button (click)="goBack()">Back</button>
-<button (click)="updateUser()">Update</button>
-<button (click)="deleteUser()">Delete</button>
+<div class="button-group">
+  <button (click)="goBack()">Back</button>
+  <button (click)="updateUser()">Update</button>
+  <button (click)="deleteUser()">Delete</button>
+</div>
 
 <div *ngIf="user" class="user-details-card">
   <div class="user-header">
-    <img [src]="user.avatar" alt="User Avatar" class="avatar" />
+    <img [src]="user.avatar" alt="{{ user.first_name }}'s avatar" class="avatar" />
     <div class="user-header-info">
       <h2>{{ user.first_name }} {{ user.last_name }}</h2>
       <p>{{ user.email }}</p>
@@ -14,7 +16,7 @@
   </div>
   <hr />
   <div class="user-body">
-    <img [src]="user.avatar" alt="User Avatar" class="user-large-image" />
+    <img [src]="user.avatar" alt="{{ user.first_name }}'s avatar" class="user-large-image" />
     <div class="user-info">
       <p><strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
       <p><strong>Email:</strong> {{ user.email }}</p>
