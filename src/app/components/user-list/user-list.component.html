@@ -1,9 +1,8 @@
 <app-header [showSearch]="true" (searchId)="handleSearch($event)"></app-header>
 
-  
-  
 <div class="container">
   <button (click)="addUser()" class="add-user-btn">Add User</button>
+
 
   <div class="user-list-container">
     <app-pagination 
@@ -16,11 +15,9 @@
     </app-pagination>
 
     <ul class="user-list">
-      @for (user of filteredUsers; track $index) {
+      <li *ngFor="let user of paginatedUsers">
         <app-user [user]="user"></app-user>
-      }
+      </li>
     </ul>
   </div>
 </div>
-
-

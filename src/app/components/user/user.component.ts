@@ -15,4 +15,8 @@ export class UserComponent {
   viewDetails() {
     this.router.navigate(['/users', this.user.id]); 
   }
+
+  deleteUser() {
+    this.userListComponent.deleteUser(this.user.id); // Use the delete method from UserListComponent
+  }
 }

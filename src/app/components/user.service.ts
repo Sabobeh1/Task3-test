@@ -14,19 +14,15 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   // Fetch users with pagination (from API if local storage is empty)
-  getUsers(page: number = 1, itemsPerPage: number = 5): Observable<{ data: User[], total: number }> {
+  getAllUsers(): Observable<{ data: User[] }> {
     const storedUsers = localStorage.getItem(this.localStorageKey);
     if (storedUsers) {
       const usersArray = JSON.parse(storedUsers);
-      const paginatedUsers = usersArray.slice((page - 1) * itemsPerPage, page * itemsPerPage);
-      return of({
-        data: paginatedUsers,               // Return the paginated data
-        total: usersArray.length             // Return the total number of users from local storage
-      });
+      return of({ data: usersArray });
     } else {
-      return this.http.get<{ data: User[], total: number }>(`${this.apiUrl}?page=${page}&per_page=${itemsPerPage}`).pipe(
+      return this.http.get<{ data: User[] }>(`${this.apiUrl}?per_page=12`).pipe(
         tap((response) => {
-          localStorage.setItem(this.localStorageKey, JSON.stringify(response.data));  // Cache the data in local storage
+          localStorage.setItem(this.localStorageKey, JSON.stringify(response.data)); // Cache the data
         })
       );
     }

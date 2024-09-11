@@ -59,9 +59,11 @@
 
 .button-container {
   text-align: left;
+  display: flex;
+  gap: 10px;
 }
 
-.view-details-button {
+.view-details-button,.delete-button {
   padding: 7px 15px;
   background-color: #3f51b5;
   color: white;
@@ -71,6 +73,9 @@
   transition: background-color 0.3s ease;
 }
 
+.delete-button:hover {
+  background-color: #303f9f;
+}
 .view-details-button:hover {
   background-color: #303f9f;
 }
@@ -97,7 +102,7 @@
     text-overflow: clip;
   }
 
-  .view-details-button {
+  .view-details-button,.delete-button {
     align-self: flex-end;
   }
 }
