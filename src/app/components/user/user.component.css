@@ -20,6 +20,7 @@
 
 .user-avatar {
   flex-shrink: 0;
+  position: relative;
   margin-right: 15px;
 }
 
@@ -27,6 +28,23 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-initials {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #3f51b5;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .user-info {
@@ -63,7 +81,7 @@
   gap: 10px;
 }
 
-.view-details-button,.delete-button {
+.view-details-button, .delete-button {
   padding: 7px 15px;
   background-color: #3f51b5;
   color: white;
@@ -76,6 +94,7 @@
 .delete-button:hover {
   background-color: #303f9f;
 }
+
 .view-details-button:hover {
   background-color: #303f9f;
 }

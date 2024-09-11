@@ -14,7 +14,6 @@ export class AddUserComponent {
 
   constructor(private userService: UserService, private router: Router) {}
 
-  // Method to handle adding a new user
   addUser(form: NgForm): void {
     if (form.valid) {
       this.userService.saveUser(this.user); // Save the new user
@@ -22,7 +21,6 @@ export class AddUserComponent {
     }
   }
 
-  // Cancel and navigate back to the user list
   cancel(): void {
     this.router.navigate(['/users']);
   }
