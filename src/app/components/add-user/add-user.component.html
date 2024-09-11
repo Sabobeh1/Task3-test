@@ -62,18 +62,6 @@
       <p class="control-error" *ngIf="email.errors?.['email']">Invalid email address.</p>
     }
 
-    <!-- Avatar URL -->
-    <div class="control">
-      <label for="avatar">Avatar URL:</label>
-      <input
-        type="url"
-        id="avatar"
-        name="avatar"
-        [(ngModel)]="user.avatar"
-        #avatar="ngModel"
-      />
-    </div>
-
     <div class="button-group">
       <button type="submit" [disabled]="!userForm.form.valid">Add User</button>
       <button type="button" (click)="cancel()">Cancel</button>
