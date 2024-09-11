@@ -58,7 +58,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     if (id !== null) {
       this.paginatedUsers = this.users.filter((user) => user.id === id);
     } else {
-      this.updatePaginatedUsers(); // Reset to paginated users if no search
+      this.updatePaginatedUsers(); 
     }
   }
 
@@ -68,21 +68,21 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   deleteUser(id: number): void {
     this.userService.deleteUser(id);
-    this.loadAllUsers(); // Reload all users after deletion to ensure pagination works
+    this.loadAllUsers(); 
   }
 
   onPageChanged(page: number): void {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
-      this.updatePaginatedUsers(); // Update paginated users when the page is changed
+      this.updatePaginatedUsers(); 
     }
   }
 
   onItemsPerPageChanged(itemsPerPage: number): void {
     this.itemsPerPage = itemsPerPage;
-    this.currentPage = 1; // Reset to first page when items per page is changed
+    this.currentPage = 1; 
     this.totalPages = Math.ceil(this.totalUsers / this.itemsPerPage);
-    this.updatePaginatedUsers(); // Update paginated users when items per page is changed
+    this.updatePaginatedUsers(); 
   }
 
   ngOnDestroy(): void {
