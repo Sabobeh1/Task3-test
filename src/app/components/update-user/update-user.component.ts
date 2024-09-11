@@ -23,7 +23,7 @@ export class UpdateUserComponent implements OnInit {
     if (userId) {
       this.userService.getUserById(userId).subscribe({
         next: (response) => {
-          this.user = response.data;  // Populate the form with existing user data
+          this.user = response.data;  
         },
         error: () => {
           alert('Failed to load user details');
@@ -34,8 +34,8 @@ export class UpdateUserComponent implements OnInit {
 
   saveUser(form: NgForm): void {
     if (form.valid) {
-      this.userService.saveUser(this.user); // Save the updated user
-      this.router.navigate(['/users']); // Redirect back to the user list
+      this.userService.saveUser(this.user); 
+      this.router.navigate(['/users']); 
     }
   }
 

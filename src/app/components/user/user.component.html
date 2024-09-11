@@ -1,16 +1,15 @@
 <li class="user-card">
   <div class="user-avatar">
-    <!-- Display user avatar if available, otherwise show default profile.png -->
     <img
-      [src]="user.avatar ? user.avatar : 'assets/images/profile.png'"
+      [src]="user.avatar"
       class="avatar"
     />
 
-    <!-- Show initials if no avatar is provided -->
     <div class="profile-initials" *ngIf="!user.avatar && user.first_name && user.last_name">
       {{ user.first_name[0] }}{{ user.last_name[0] }}
     </div>
   </div>
+
   <div class="user-info">
     <h3>{{ user.first_name }} {{ user.last_name }}</h3>
     <p>{{ user.email }}</p>

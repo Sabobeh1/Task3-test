@@ -5,7 +5,6 @@
   <h2>Add New User</h2>
   <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
     
-    <!-- First Name -->
     <div class="control">
       <label for="first_name">First Name:</label>
       <input
@@ -24,7 +23,6 @@
       <p class="control-error" *ngIf="firstName.errors?.['minlength']">First Name must be at least 2 characters long.</p>
     }
 
-    <!-- Last Name -->
     <div class="control">
       <label for="last_name">Last Name:</label>
       <input
@@ -43,7 +41,6 @@
       <p class="control-error" *ngIf="lastName.errors?.['minlength']">Last Name must be at least 2 characters long.</p>
     }
 
-    <!-- Email -->
     <div class="control">
       <label for="email">Email:</label>
       <input

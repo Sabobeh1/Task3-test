@@ -1,4 +1,3 @@
-/* Container for the form */
 .user-form-container {
   max-width: 600px;
   margin: 40px auto;
@@ -8,7 +7,6 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Form Header */
 h2 {
   font-size: 24px;
   margin-bottom: 20px;
@@ -16,14 +14,12 @@ h2 {
   color: #333;
 }
 
-/* Form Control Container */
 .control {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
 }
 
-/* Labels */
 .control label {
   font-weight: 600;
   margin-bottom: 5px;
@@ -31,7 +27,6 @@ h2 {
   color: #555;
 }
 
-/* Input Fields */
 .control input[type="text"],
 .control input[type="email"],
 .control input[type="url"] {
@@ -56,7 +51,6 @@ h2 {
   gap: 20px;
   
 }
-/* Submit and Cancel Buttons */
 button[type="submit"],
 button[type="button"] {
   padding: 10px 20px;
@@ -84,7 +78,6 @@ button[type="button"]:hover {
   background-color: #d32f2f;
 }
 
-/* Error Messages */
 .control-error {
   font-size: 12px;
   color: #f44336;
@@ -94,13 +87,12 @@ button[type="button"]:hover {
   font-weight: 500;
 }
 
-/* Disabled Submit Button */
 button[disabled] {
   background-color: #b0b0b0;
   cursor: not-allowed;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 600px) {
   .user-form-container {
     padding: 20px;

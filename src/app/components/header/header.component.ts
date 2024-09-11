@@ -13,7 +13,6 @@ export class HeaderComponent {
   @Output() searchId = new EventEmitter<number | null>();
   
 
-  //when the search bar input changes
   onSearchChange(id: number | null): void {
     this.searchId.emit(id);
   }

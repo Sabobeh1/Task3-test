@@ -4,7 +4,6 @@
   <h2>Update User</h2>
   <form #userForm="ngForm" (ngSubmit)="saveUser(userForm)">
     
-    <!-- First Name -->
     <div class="control">
       <label for="first_name">First Name:</label>
       <input
@@ -23,7 +22,6 @@
       <p class="control-error" *ngIf="firstName.errors?.['minlength']">First Name must be at least 2 characters long.</p>
     }
 
-    <!-- Last Name -->
     <div class="control">
       <label for="last_name">Last Name:</label>
       <input
@@ -42,7 +40,6 @@
       <p class="control-error" *ngIf="lastName.errors?.['minlength']">Last Name must be at least 2 characters long.</p>
     }
 
-    <!-- Email -->
     <div class="control">
       <label for="email">Email:</label>
       <input
@@ -61,7 +58,6 @@
       <p class="control-error" *ngIf="email.errors?.['email']">Invalid email address.</p>
     }
 
-    <!-- Avatar URL -->
     <div class="control">
       <label for="avatar">Avatar URL:</label>
       <input
@@ -73,7 +69,7 @@
       />
     </div>
     <div class="button-group">
-      <button type="submit" [disabled]="!userForm.form.valid">Update User</button>
+      <button type="submit" [disabled]="!userForm.form.dirty || !userForm.form.valid">Update User</button>
       <button type="button" (click)="cancel()">Cancel</button>
     </div>
     

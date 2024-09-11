@@ -23,8 +23,8 @@ export class UserDetailsComponent implements OnInit {
     const userId = +this.route.snapshot.paramMap.get('id')!;
     if (userId) {
       this.userService.getUserById(userId).subscribe({
-        next: (response: { data: User }) => {  // Explicitly define the response type
-          this.user = response.data;  // Access the `data` property properly
+        next: (response: { data: User }) => {  
+          this.user = response.data; 
           this.isLoading = false;
         },
         error: () => {

@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-  position: relative; /* For initials overlay */
+  position: relative; 
 }
 
 .avatar {
@@ -23,7 +23,6 @@
   object-fit: cover;
 }
 
-/* Initials for small avatar in header */
 .profile-initials {
   position: absolute;
   top: 0;
@@ -60,7 +59,7 @@
   display: flex;
   align-items: flex-start;
   margin-bottom: 15px;
-  position: relative; /* For large initials overlay */
+  position: relative; 
 }
 
 .user-large-image {
@@ -71,7 +70,6 @@
   object-fit: cover;
 }
 
-/* Initials for large avatar */
 .profile-initials-large {
   position: absolute;
   top: 0;

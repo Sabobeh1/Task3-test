@@ -17,6 +17,6 @@ export class UserComponent {
   }
 
   deleteUser() {
-    this.userListComponent.deleteUser(this.user.id); // Use the delete method from UserListComponent
+    this.userListComponent.deleteUser(this.user.id); 
   }
 }

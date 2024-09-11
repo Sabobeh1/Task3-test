@@ -18,7 +18,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   currentPage = 1;
   totalUsers = 0;
   totalPages = 0;
-  itemsPerPageOptions = [5, 10, 15]; // Available options for number of users per page
+  itemsPerPageOptions = [5, 10, 15]; 
   private userSubscription!: Subscription;
 
   constructor(private userService: UserService, private router: Router) {}
@@ -27,19 +27,18 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.loadAllUsers();
   }
 
-  // Fetch all users either from API or local storage
   loadAllUsers(): void {
     this.isLoading = true;
     this.errorMessage = null;
 
     this.userSubscription = this.userService
-      .getAllUsers() // Fetch all users (not paginated yet)
+      .getAllUsers() 
       .subscribe({
         next: (response) => {
-          this.users = response.data; // Store all users in the main array
-          this.totalUsers = this.users.length; // Set total users based on the fetched users
+          this.users = response.data; 
+          this.totalUsers = this.users.length; 
           this.totalPages = Math.ceil(this.totalUsers / this.itemsPerPage);
-          this.updatePaginatedUsers(); // Call method to update paginated users
+          this.updatePaginatedUsers(); 
           this.isLoading = false;
         },
         error: (error) => {
@@ -49,7 +48,6 @@ export class UserListComponent implements OnInit, OnDestroy {
       });
   }
 
-  // Update the paginatedUsers array based on currentPage and itemsPerPage
   updatePaginatedUsers(): void {
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;

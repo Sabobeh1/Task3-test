@@ -1,4 +1,3 @@
-/* Container for Add User Button and User List */
 .container {
   display: flex;
   flex-direction: row;
@@ -7,20 +6,17 @@
   gap: 20px;
 }
 
-/* Container for User List */
 .user-list-container {
   width: 100%;
   padding: 10px;
 }
 
-/* User List UL */
 .user-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-/* User Card Styles */
 .user-card {
   display: flex;
   flex-direction: column;
@@ -38,7 +34,6 @@
   background-color: #f9f9f9;
 }
 
-/* Avatar Image */
 .avatar {
   width: 70px;
   height: 70px;
@@ -69,7 +64,6 @@
   border-top: 1px solid #ddd;
 }
 
-/* View Details Button */
 .add-user-btn {
   align-self: flex-start;
   padding: 15px 15px;
@@ -86,7 +80,7 @@
   background-color: #303f9f;
 }
 
-/* Responsive Design for Small Screens */
+/* Responsive */
 @media (max-width: 900px) {
   .container {
     flex-direction: column;

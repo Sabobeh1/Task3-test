@@ -16,8 +16,8 @@ export class AddUserComponent {
 
   addUser(form: NgForm): void {
     if (form.valid) {
-      this.userService.saveUser(this.user); // Save the new user
-      this.router.navigate(['/users']); // Redirect back to the user list
+      this.userService.saveUser(this.user); 
+      this.router.navigate(['/users']); 
     }
   }
 
